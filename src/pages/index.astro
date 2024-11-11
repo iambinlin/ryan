@@ -7,15 +7,24 @@ import HomePage from '../components/home/index'
 	<main class="bg-black">
 		<HomePage client:only="react" />
 	</main>
+	<!--<div-->
+	<!--	class="cf-turnstile"-->
+	<!--	data-sitekey="0x4AAAAAAAzqTi0fM50cU4B6"-->
+	<!--	data-callback="javascriptCallback"-->
+	<!--	data-size="flexible"-->
+	<!--&gt;</div>-->
 </Layout>
-
-<script is:inline src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
-<script is:inline>
-	const heti = new Heti('.heti');
-	heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压
+<script is:inline  src="https://source.binlin.wang/heti.min.js" defer></script>
+<script  is:inline defer>
+	try {
+		const heti = new Heti('.heti');
+		heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压
+	} catch (e) {
+		//
+	}
 </script>
 <!-- Google tag (gtag.js) -->
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XYK26MQFXT"></script>
+<script is:inline async src="https://source.binlin.wang/googleGA.min.js?id=G-XYK26MQFXT"></script>
 <script is:inline>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}

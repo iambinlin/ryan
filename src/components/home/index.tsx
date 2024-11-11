@@ -59,7 +59,7 @@ const HomePage: FC = () => {
                     <h3 className="font-medium text-xm">My name is ryanwang.</h3>
                 </div>
                 <div className="flex-initial w-20">
-                    <img className="w-full rounded-s-full rounded-e-full" src="https://bigdreamerblog.oss-cn-beijing.aliyuncs.com/nextBlog/ryanwang.png" alt="my photo"/>
+                    <img crossOrigin="anonymous" className="w-full rounded-s-full rounded-e-full" src="https://source.binlin.wang/ryanwang.png" alt="my photo"/>
                 </div>
             </div>
             <div className="flex flex-col break-words items-center  justify-center">
@@ -104,7 +104,7 @@ const HomePage: FC = () => {
                     }</p>
                 </div>
             </div>
-            <div className="w-[100%] h-[100%] pb-10"><img className="w-[100%] h-[100%]" src="https://bigdreamerblog.oss-cn-beijing.aliyuncs.com/nextBlog/扫码_搜索联合传播样式-白色版.png" alt=""/></div>
+            <div className="w-[100%] h-[100%] pb-10"><img loading="lazy" className="w-[100%] h-[100%]" src="https://bigdreamerblog.oss-cn-beijing.aliyuncs.com/nextBlog/扫码_搜索联合传播样式-白色版.png?x-oss-process=image/auto-orient,1/interlace,1/quality,q_1/format,webp" alt=""/></div>
         </div>
     )
 };
