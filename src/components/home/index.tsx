@@ -232,7 +232,7 @@ const HomePage: FC = () => {
                                 <h2 className="section-title">About Me</h2>
                                 <div className="prose-content">
                                     <p className="prose-block">{t('我的花名（或者是笔名）叫"不换"，英文名叫 ryanwang。在现实生活中你可以叫我 "小王"，在游戏里，我有一个独一无二的名字叫 "林温芙"，很荣幸你能在这里看到我的个人介绍。')}</p>
-                                    <p className="prose-block">{t('我是一名拥有 4年+ 经验的前端开发者，比较熟悉 react，擅长组件库的开发、治理和维护，精通前端领域所有框架的拼写，擅长各种 API 的阅读和调用。')}</p>
+                                    <p className="prose-block">{t('我是一名拥有 5年+ 经验的前端开发者，比较熟悉 react，擅长组件库的开发、治理和维护，精通前端领域所有框架的拼写，擅长各种 API 的阅读和调用。')}</p>
                                     <p className="prose-block">
                                         {t('热爱工作，也同样热爱开源社区，下班后喜欢静下心来研究一些奇奇怪怪的东西，你可以在')} 
                                         <a className="text-link" href="https://github.com/bigbigDreamer">GitHub</a> 
