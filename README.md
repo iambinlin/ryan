@@ -1,3 +1,3 @@
-# Who is ryanwang?
+# Ryan · AI Agent
 
-Hello everyone, this is my personal introduction page.
+Personal introduction page focused on AI Agent work and workflow design.

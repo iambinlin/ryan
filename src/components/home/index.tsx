@@ -1,296 +1,207 @@
-import {useEffect, useState, useRef} from "react";
-import type {FC} from "react";
-import { setLocales, t, setLang } from 'translator-client';
-import dayjs from 'dayjs';
-import { CalendarDaysIcon, LifebuoyIcon, BookOpenIcon , CommandLineIcon } from '@heroicons/react/24/outline';
-import locales from '../../locales/complete.json';
+import { useEffect, useState } from "react";
+import type { FC } from "react";
+import { setLang, setLocales, t } from "translator-client";
+import {
+    CpuChipIcon,
+    SparklesIcon,
+    WrenchScrewdriverIcon,
+} from "@heroicons/react/24/outline";
+import locales from "../../locales/complete.json";
 
+type Lang = "zh" | "en";
 
 setLocales(locales);
-const userLanguage = navigator.language || navigator.languages || 'en' as any
 
-const finalLang = userLanguage === 'en' ? userLanguage : 'zh'
+const getInitialLang = (): Lang => {
+    if (typeof navigator === "undefined") {
+        return "zh";
+    }
 
-setLang(finalLang);
-
-// 加载屏幕组件
-const LoadingScreen: FC<{ phase: number; showParticles: boolean }> = ({ phase, showParticles }) => {
-    return (
-        <div className={`loading-screen ${phase >= 3 ? 'fade-out' : ''}`}>
-            <div className="loading-content">
-                {/* 中央Logo动画 */}
-                <div className={`loading-logo ${phase >= 1 ? 'animate' : ''}`}>
-                    <div className="logo-ring"></div>
-                    <div className="logo-ring ring-2"></div>
-                    <div className="logo-ring ring-3"></div>
-                    
-                    {/* 双语Logo */}
-                    <div className="logo-text-container">
-                        <div className="logo-text-main">
-                            <span className="logo-english">Ryan</span>
-                            <span className="logo-dot">.</span>
-                            <span className="logo-chinese">不换</span>
-                        </div>
-                        <div className="logo-subtitle">Developer</div>
-                    </div>
-                </div>
-                
-                {/* 加载文本 */}
-                <div className={`loading-text ${phase >= 1 ? 'show' : ''}`}>
-                    <div className="glitch-text" data-text="WELCOME TO MY WORLD...">WELCOME TO MY WORLD...</div>
-                </div>
-                
-                {/* 进度条 */}
-                <div className={`progress-bar ${phase >= 1 ? 'animate' : ''}`}>
-                    <div className="progress-fill"></div>
-                </div>
-            </div>
-            
-            {/* 粒子爆发效果 */}
-            {showParticles && (
-                <div className="particle-explosion">
-                    {Array.from({ length: 50 }).map((_, i) => (
-                        <div 
-                            key={i} 
-                            className="particle" 
-                            style={{
-                                '--delay': `${i * 0.02}s`,
-                                '--angle': `${(i * 7.2)}deg`,
-                                '--distance': `${100 + Math.random() * 200}px`
-                            } as React.CSSProperties}
-                        />
-                    ))}
-                </div>
-            )}
-        </div>
-    );
+    const language = navigator.languages?.[0] ?? navigator.language ?? "zh";
+    return language.toLowerCase().startsWith("en") ? "en" : "zh";
 };
 
-// 懒加载组件
-const LazyImage: FC<{
-    src: string;
-    alt: string;
-    className?: string;
-    placeholder?: string;
-}> = ({ src, alt, className = '', placeholder }) => {
-    const [imageSrc, setImageSrc] = useState(placeholder || '');
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const imgRef = useRef<HTMLImageElement>(null);
+const initialLang = getInitialLang();
+setLang(initialLang);
 
-    useEffect(() => {
-        let observer: IntersectionObserver;
-        
-        if (imgRef.current) {
-            observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            setImageSrc(src);
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.1 }
-            );
-            
-            observer.observe(imgRef.current);
-        }
-
-        return () => {
-            if (observer && imgRef.current) {
-                observer.unobserve(imgRef.current);
-            }
-        };
-    }, [src]);
-
-    const handleLoad = () => {
-        setImageLoaded(true);
-    };
-
-    // 检查是否是头像
-    const isProfileAvatar = className.includes('profile-avatar');
-    
-    return (
-        <div className={isProfileAvatar ? 'profile-avatar-wrapper' : 'qr-code-container'}>
-            <img
-                ref={imgRef}
-                src={imageSrc}
-                alt={alt}
-                className={isProfileAvatar ? `profile-avatar ${imageLoaded ? 'loaded' : 'loading'}` : `qr-code ${imageLoaded ? 'loaded' : 'loading'}`}
-                onLoad={handleLoad}
-                loading="lazy"
-                crossOrigin={isProfileAvatar ? "anonymous" : undefined}
-            />
+const LoadingScreen: FC<{ ready: boolean }> = ({ ready }) => (
+    <div className={`agent-loader ${ready ? "fade-out" : ""}`} aria-hidden={ready}>
+        <div className="loader-mark">
+            <span className="loader-ring" />
+            <span className="loader-ring loader-ring-offset" />
+            <span className="loader-core">AI</span>
         </div>
-    );
-};
+        <p>{t("正在打开工作台")}</p>
+    </div>
+);
+
+const PortraitSketch: FC = () => (
+    <svg className="portrait-sketch" viewBox="0 0 260 260" role="img" aria-label={t("手绘头像")}>
+        <path className="portrait-paper" d="M37 28 C86 10, 192 14, 224 41 C248 78, 243 195, 218 224 C177 253, 75 248, 36 221 C9 178, 14 63, 37 28 Z" />
+        <path className="portrait-hair" d="M72 103 C87 52, 169 47, 188 105 C172 92, 139 88, 112 96 C94 101, 82 106, 72 103 Z" />
+        <path className="portrait-face" d="M75 109 C84 78, 178 77, 188 109 C197 164, 166 205, 130 205 C94 205, 66 164, 75 109 Z" />
+        <path className="portrait-glasses" d="M82 128 C98 117, 116 117, 126 129 M135 129 C145 117, 166 118, 178 129 M126 129 C130 132, 133 132, 135 129" />
+        <path className="portrait-smile" d="M107 165 C121 177, 142 177, 156 164" />
+        <path className="portrait-collar" d="M75 224 C94 202, 166 202, 187 224" />
+        <text x="130" y="238">Ryan</text>
+    </svg>
+);
+
+const AgentSketch: FC = () => (
+    <figure className="agent-sketch" aria-label={t("AI Agent 工作流图")}>
+        <svg className="sketch-map" viewBox="0 0 720 520" role="img">
+            <title>{t("AI Agent 工作流图")}</title>
+            <path className="sketch-paper-edge" d="M63 39 C169 22, 518 27, 642 49 C675 56, 684 437, 651 461 C531 493, 164 492, 70 466 C38 458, 34 61, 63 39 Z" />
+            <path className="sketch-path sketch-path-main" d="M126 152 C196 95, 286 112, 333 166 S471 231, 565 171" />
+            <path className="sketch-path sketch-path-return" d="M576 292 C486 365, 353 354, 295 292 S179 236, 112 306" />
+            <path className="sketch-path sketch-path-loop" d="M348 214 C424 202, 450 276, 387 316 C333 350, 270 313, 286 262 C294 232, 316 219, 348 214 Z" />
+
+            <g className="sketch-node prompt-node" transform="translate(79 103)">
+                <path d="M9 12 C40 -5, 126 -2, 151 14 C164 36, 158 85, 144 103 C110 118, 41 116, 12 101 C-5 77, -3 34, 9 12 Z" />
+                <text x="75" y="53">Prompt</text>
+            </g>
+
+            <g className="sketch-node plan-node" transform="translate(271 117)">
+                <path d="M12 8 C46 -6, 126 1, 144 18 C161 44, 148 91, 126 103 C87 114, 34 110, 11 93 C-4 68, -3 27, 12 8 Z" />
+                <text x="74" y="53">Plan</text>
+            </g>
+
+            <g className="sketch-node tool-node" transform="translate(499 113)">
+                <path d="M13 11 C51 -3, 127 0, 148 18 C164 45, 155 91, 131 104 C95 116, 35 112, 12 94 C-5 69, -4 30, 13 11 Z" />
+                <text x="76" y="53">Tools</text>
+            </g>
+
+            <g className="sketch-node memory-node" transform="translate(88 284)">
+                <path d="M8 16 C44 -2, 128 0, 152 20 C164 48, 153 91, 129 106 C87 118, 35 112, 11 95 C-5 68, -4 32, 8 16 Z" />
+                <text x="78" y="55">Memory</text>
+            </g>
+
+            <g className="sketch-node review-node" transform="translate(292 294)">
+                <path d="M11 10 C42 -5, 124 -1, 148 18 C165 44, 153 92, 129 105 C93 119, 36 112, 12 94 C-5 70, -3 28, 11 10 Z" />
+                <text x="76" y="55">Review</text>
+            </g>
+
+            <g className="sketch-node ship-node" transform="translate(514 284)">
+                <path d="M12 13 C43 -3, 124 -2, 148 17 C164 44, 153 92, 130 104 C93 117, 36 113, 12 95 C-4 68, -4 31, 12 13 Z" />
+                <text x="76" y="55">Ship</text>
+            </g>
+
+            <path className="sketch-arrow" d="M607 218 C626 235, 632 262, 613 282" />
+            <path className="sketch-arrow-head" d="M604 276 L614 285 L622 273" />
+            <path className="sketch-arrow" d="M208 336 C232 382, 312 394, 359 356" />
+            <path className="sketch-arrow-head" d="M350 356 L363 353 L358 367" />
+            <text className="sketch-note sketch-note-top" x="421" y="80">{t("small loops, clear state")}</text>
+            <path className="sketch-note-line" d="M447 89 C438 107, 427 119, 408 132" />
+            <text className="sketch-note sketch-note-bottom" x="214" y="438">{t("human check")}</text>
+            <path className="sketch-note-line" d="M293 417 C315 392, 326 373, 339 348" />
+        </svg>
+    </figure>
+);
 
 const HomePage: FC = () => {
-    const [lang,_setLang] = useState<'zh'|'en'>(finalLang);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [lang, setCurrentLang] = useState<Lang>(initialLang);
     const [isLoading, setIsLoading] = useState(true);
-    const [showParticles, setShowParticles] = useState(false);
-    const [animationPhase, setAnimationPhase] = useState(0);
+
+    const focusItems = [
+        {
+            icon: SparklesIcon,
+            title: t("AI Agent 体验"),
+            description: t("把复杂能力拆成清晰步骤，让用户知道 Agent 正在想什么、做到哪一步。"),
+        },
+        {
+            icon: WrenchScrewdriverIcon,
+            title: t("工具编排"),
+            description: t("连接 API、脚本、浏览器和文档系统，让重复劳动变成可复用流程。"),
+        },
+        {
+            icon: CpuChipIcon,
+            title: t("人机协作"),
+            description: t("在关键节点保留确认、回退和审计，让自动化更稳、更可控。"),
+        },
+    ];
 
     useEffect(() => {
-        if(window.gtag) {
-            window.gtag('event', 'pageView', {
-                time:dayjs().format('YYYY年MM月DD日 HH时mm分ss秒')
-            });
-        }
-
-        // 鼠标追踪效果
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-        };
-
-        // 入场动画序列
-        const loadingSequence = async () => {
-            // 阶段1: 加载动画 (2秒)
-            setTimeout(() => setAnimationPhase(1), 500);
-            
-            // 阶段2: 粒子爆发 (1秒)
-            setTimeout(() => {
-                setShowParticles(true);
-                setAnimationPhase(2);
-            }, 2000);
-            
-            // 阶段3: 内容显示 (0.5秒后)
-            setTimeout(() => {
-                setIsLoading(false);
-                setAnimationPhase(3);
-            }, 3000);
-        };
-
-        loadingSequence();
-        window.addEventListener('mousemove', handleMouseMove);
-        
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        const timer = window.setTimeout(() => setIsLoading(false), 850);
+        return () => window.clearTimeout(timer);
     }, []);
 
-    const onClick = () => {
-        _setLang(pre => {
-            const _lang =  pre ==='zh' ? 'en' : 'zh';
-            setLang(_lang);
-            if(window.gtag) {
-                window.gtag('event', 'toggleLang', {
-                    lang:_lang
-                });
-            }
-            return _lang;
-        })
-    }
+    const toggleLang = () => {
+        setCurrentLang((previous) => {
+            const nextLang = previous === "zh" ? "en" : "zh";
+            setLang(nextLang);
+            return nextLang;
+        });
+    };
 
     return (
         <>
-            {/* 加载屏幕 */}
-            {isLoading && (
-                <LoadingScreen phase={animationPhase} showParticles={showParticles} />
-            )}
-            
-            {/* 主内容 */}
-            <div className={`main-content ${!isLoading ? 'show' : ''}`}>
-                <div className="min-h-screen flex items-center justify-center p-6">
-                    {/* Mouse Glow Effect */}
-                    <div 
-                        className="mouse-glow"
-                        style={{
-                            left: mousePosition.x - 100,
-                            top: mousePosition.y - 100,
-                        }}
-                    />
-                    
-                    <div className="max-w-4xl w-full">
-                        {/* Header Section */}
-                        <header className={`text-center mb-16 entrance-animation ${!isLoading ? 'phase-1' : ''}`}>
-                            <div className="flex justify-end mb-8">
-                                <div className="lang-toggle" onClick={onClick}>
-                                    <span className={`lang-option ${lang === 'en' ? 'active' : ''}`}>EN</span>
-                                    <span className="mx-2 text-slate-400">|</span>
-                                    <span className={`lang-option ${lang === 'zh' ? 'active' : ''}`}>ZH</span>
-                                </div>
+            {isLoading && <LoadingScreen ready={!isLoading} />}
+
+            <div className={`agent-page ${!isLoading ? "ready" : ""}`}>
+                <div className="agent-shell heti">
+                    <nav className="agent-nav" aria-label="Page language">
+                        <span className="brand-mark">
+                            <span className="brand-dot" />
+                            Ryan
+                        </span>
+                        <button className="language-switch" type="button" onClick={toggleLang} aria-label="Toggle language">
+                            <span className={lang === "en" ? "active" : ""}>EN</span>
+                            <span className={lang === "zh" ? "active" : ""}>ZH</span>
+                        </button>
+                    </nav>
+
+                    <header className="hero-grid">
+                        <section className="hero-copy">
+                            <p className="eyebrow">{t("AI Agent 工作者")}</p>
+                            <h1>Hello, I'm Ryan</h1>
+                            <p className="hero-title">{t("AI Agent 构建者与工作流设计者")}</p>
+                            <p className="hero-subtitle">
+                                {t("把模型、工具、记忆和人类反馈接成能稳定交付的工作流。")}
+                            </p>
+                        </section>
+
+                        <aside className="portrait-card" aria-label={t("手绘头像")}>
+                            <PortraitSketch />
+                            <p>{t("从想法到行动的 Agent 工作流")}</p>
+                        </aside>
+                    </header>
+
+                    <main className="agent-content">
+                        <section className="about-panel">
+                            <p className="section-kicker">{t("关于我")}</p>
+                            <div className="about-copy">
+                                <p>{t("我现在把主要精力放在 AI Agent：把大模型能力、工具调用、上下文记忆和人工确认编排成可靠流程。")}</p>
+                                <p>{t("我更关心 Agent 能不能被理解、被验证、被放心交给真实任务，而不只是一次漂亮的演示。")}</p>
                             </div>
-                            
-                            <div className="profile-section">
-                                <div className={`profile-image-container entrance-animation ${!isLoading ? 'phase-2' : ''}`}>
-                                    <LazyImage
-                                        src="https://source.binlin.wang/ryanwang.png"
-                                        alt="my photo"
-                                        className="profile-avatar-container"
-                                        placeholder="data:image/svg+xml,%3Csvg width='140' height='140' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='70' cy='70' r='70' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23666' font-size='12'%3ELoading...%3C/text%3E%3C/svg%3E"
-                                    />
-                                </div>
-                                <h1 className={`profile-name entrance-animation ${!isLoading ? 'phase-3' : ''}`}>Hello, I'm Ryan Wang</h1>
-                                <p className={`profile-title entrance-animation ${!isLoading ? 'phase-4' : ''}`}>Frontend Developer & Open Source Enthusiast</p>
+                        </section>
+
+                        <section className="focus-panel">
+                            <p className="section-kicker">{t("Agent 方向")}</p>
+                            <div className="focus-list">
+                                {focusItems.map(({ icon: Icon, title, description }) => (
+                                    <article className="focus-item" key={title}>
+                                        <Icon aria-hidden="true" />
+                                        <div>
+                                            <h2>{title}</h2>
+                                            <p>{description}</p>
+                                        </div>
+                                    </article>
+                                ))}
                             </div>
-                        </header>
+                        </section>
 
-                        {/* Main Content */}
-                        <main className="layered-content">
-                            {/* About Section - Layer 1 */}
-                            <section className={`content-layer layer-1 entrance-animation ${!isLoading ? 'phase-5' : ''}`}>
-                                <h2 className="section-title">About Me</h2>
-                                <div className="prose-content">
-                                    <p className="prose-block">{t('我的花名（或者是笔名）叫"不换"，英文名叫 ryanwang。在现实生活中你可以叫我 "小王"，在游戏里，我有一个独一无二的名字叫 "林温芙"，很荣幸你能在这里看到我的个人介绍。')}</p>
-                                    <p className="prose-block">{t('我是一名拥有 5年+ 经验的前端开发者，比较熟悉 react，擅长组件库的开发、治理和维护，精通前端领域所有框架的拼写，擅长各种 API 的阅读和调用。')}</p>
-                                    <p className="prose-block">
-                                        {t('热爱工作，也同样热爱开源社区，下班后喜欢静下心来研究一些奇奇怪怪的东西，你可以在')} 
-                                        <a className="text-link" href="https://github.com/bigbigDreamer">GitHub</a> 
-                                        {t('上找到我，也可以使用')} 
-                                        <a className="text-link" href="mailto:email@binlin.wang" type="email">Email</a> 
-                                        {t('联系我')}。
-                                    </p>
-                                </div>
-                            </section>
-
-                            {/* Projects Section - Layer 2 */}
-                            <section className={`content-layer layer-2 entrance-animation ${!isLoading ? 'phase-6' : ''}`}>
-                                <h2 className="section-title">My Projects</h2>
-                                <p className="section-subtitle">{t('我随着兴趣爱好写了一些小玩意，你可以尽情欣赏～')}</p>
-                                <div className="projects-layer">
-                                    <a href="https://weekly.binlin.wang" className={`project-item entrance-animation ${!isLoading ? 'phase-7' : ''}`}>
-                                        <CalendarDaysIcon className="project-icon" />
-                                        <span className="project-name">{t('周刊')}</span>
-                                    </a>
-                                    <a href="https://ts-handbook.binlin.wang" className={`project-item entrance-animation ${!isLoading ? 'phase-8' : ''}`}>
-                                        <BookOpenIcon className="project-icon" />
-                                        <span className="project-name">{t('TS手札')}</span>
-                                    </a>
-                                    <a href="https://blog.binlin.wang" className={`project-item entrance-animation ${!isLoading ? 'phase-9' : ''}`}>
-                                        <LifebuoyIcon className="project-icon" />
-                                        <span className="project-name">{t('博客')}</span>
-                                    </a>
-                                    <a href="https://github.com/bigbigDreamer/xumi" className={`project-item entrance-animation ${!isLoading ? 'phase-10' : ''}`}>
-                                        <CommandLineIcon className="project-icon" />
-                                        <span className="project-name">{t('须弥')}</span>
-                                    </a>
-                                </div>
-                            </section>
-
-                            {/* WeChat Section - Layer 3 */}
-                            <section className={`content-layer layer-3 entrance-animation ${!isLoading ? 'phase-11' : ''}`}>
-                                <h2 className="section-title">Follow Me</h2>
-                                <div className="wechat-layer">
-                                    <div className="wechat-content">
-                                        <p className="prose-block">{t('最后，我还是公众号("不换的随想乐园")的作者，平时喜欢总结和输出一些知识理解和经验总结，如果你也感兴趣，欢迎来关注我哦~')}</p>
-                                    </div>
-                                    <div className="wechat-visual">
-                                        <LazyImage
-                                            src="https://bigdreamerblog.oss-cn-beijing.aliyuncs.com/nextBlog/扫码_搜索联合传播样式-白色版.png?x-oss-process=image/auto-orient,1/interlace,1/quality,q_1/format,webp"
-                                            alt="WeChat QR Code"
-                                            className="qr-image"
-                                            placeholder="data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23666'%3ELoading...%3C/text%3E%3C/svg%3E"
-                                        />
-                                    </div>
-                                </div>
-                            </section>
-                        </main>
-                    </div>
+                        <section className="sketch-panel">
+                            <div>
+                                <p className="section-kicker">{t("工作流")}</p>
+                                <h2>{t("从想法到行动的 Agent 工作流")}</h2>
+                            </div>
+                            <AgentSketch />
+                        </section>
+                    </main>
                 </div>
             </div>
         </>
-    )
+    );
 };
 
-
-export default HomePage
+export default HomePage;

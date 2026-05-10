@@ -1,0 +1,676 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap");
+
+:root {
+    --paper: #f4f7ef;
+    --paper-strong: #fffaf0;
+    --ink: #222831;
+    --muted: #606a73;
+    --line: #20242c;
+    --teal: #2f6f73;
+    --coral: #d95d39;
+    --blue: #3656d4;
+    --moss: #66845f;
+    --amber: #c88a2d;
+    --shadow: 0 24px 70px rgba(34, 40, 49, 0.14);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--paper);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+.agent-gradient-bg {
+    min-height: 100vh;
+    background:
+        linear-gradient(115deg, rgba(54, 86, 212, 0.10), transparent 32%),
+        linear-gradient(245deg, rgba(217, 93, 57, 0.12), transparent 30%),
+        repeating-linear-gradient(0deg, rgba(34, 40, 49, 0.05) 0 1px, transparent 1px 32px),
+        repeating-linear-gradient(90deg, rgba(34, 40, 49, 0.04) 0 1px, transparent 1px 32px),
+        var(--paper);
+    position: relative;
+}
+
+.agent-gradient-bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(47, 111, 115, 0.10), transparent 22%, transparent 78%, rgba(200, 138, 45, 0.10)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    mix-blend-mode: multiply;
+}
+
+.agent-page {
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 420ms ease, transform 420ms ease;
+    position: relative;
+    z-index: 1;
+}
+
+.agent-page.ready {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.agent-shell {
+    width: min(1120px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 28px 0 72px;
+}
+
+.agent-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 54px;
+}
+
+.brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.brand-dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    background: var(--coral);
+    box-shadow: 5px 5px 0 var(--line);
+}
+
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    background: rgba(255, 250, 240, 0.78);
+    box-shadow: 5px 5px 0 var(--line);
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.language-switch:hover,
+.language-switch:focus-visible {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--line);
+}
+
+.language-switch:focus-visible {
+    outline: 3px solid rgba(54, 86, 212, 0.34);
+    outline-offset: 4px;
+}
+
+.language-switch span {
+    min-width: 44px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.language-switch .active {
+    color: #ffffff;
+    background: var(--ink);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+    align-items: center;
+    gap: 54px;
+}
+
+.hero-copy {
+    max-width: 720px;
+}
+
+.eyebrow,
+.section-kicker {
+    margin: 0 0 14px;
+    color: var(--teal);
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.hero-copy h1 {
+    margin: 0;
+    max-width: 10ch;
+    color: var(--ink);
+    font-family: "Kalam", "Inter", sans-serif;
+    font-size: 4.7rem;
+    font-weight: 700;
+    line-height: 0.94;
+}
+
+.hero-title {
+    margin: 28px 0 0;
+    color: var(--coral);
+    font-size: 1.48rem;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    max-width: 620px;
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 1.15rem;
+}
+
+.portrait-card {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    padding: 24px;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(255, 250, 240, 0.92)),
+        var(--paper-strong);
+    box-shadow: var(--shadow), 9px 9px 0 var(--line);
+    transform: rotate(1deg);
+}
+
+.portrait-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    right: 22px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--line) 0 9px, transparent 9px 18px);
+    opacity: 0.24;
+}
+
+.portrait-card p {
+    margin: 0;
+    color: var(--muted);
+    font-family: "Kalam", "Inter", sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.portrait-sketch {
+    width: min(260px, 100%);
+    height: auto;
+    overflow: visible;
+}
+
+.portrait-paper {
+    fill: #edf5ed;
+    stroke: var(--line);
+    stroke-width: 5;
+}
+
+.portrait-face {
+    fill: #ffe0c2;
+    stroke: var(--line);
+    stroke-width: 5;
+}
+
+.portrait-hair {
+    fill: #2f2b27;
+    stroke: var(--line);
+    stroke-width: 5;
+}
+
+.portrait-glasses,
+.portrait-smile,
+.portrait-collar {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.portrait-collar {
+    stroke: var(--blue);
+}
+
+.portrait-sketch text {
+    fill: var(--line);
+    font-family: "Kalam", "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.agent-content {
+    display: grid;
+    gap: 60px;
+    margin-top: 72px;
+}
+
+.about-panel,
+.focus-panel,
+.sketch-panel {
+    border-top: 2px solid rgba(34, 40, 49, 0.18);
+    padding-top: 28px;
+}
+
+.about-panel {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 34px;
+}
+
+.about-copy {
+    max-width: 820px;
+}
+
+.about-copy p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.08rem;
+}
+
+.about-copy p + p {
+    margin-top: 18px;
+}
+
+.focus-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.focus-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    min-height: 180px;
+    padding: 20px;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 6px 6px 0 rgba(34, 40, 49, 0.92);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.focus-item:nth-child(2) {
+    background: rgba(238, 247, 247, 0.82);
+}
+
+.focus-item:nth-child(3) {
+    background: rgba(255, 243, 229, 0.86);
+}
+
+.focus-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 rgba(34, 40, 49, 0.92);
+}
+
+.focus-item svg {
+    width: 28px;
+    height: 28px;
+    color: var(--blue);
+    stroke-width: 2;
+}
+
+.focus-item h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.08rem;
+    line-height: 1.35;
+}
+
+.focus-item p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.sketch-panel {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.sketch-panel h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.8rem;
+    line-height: 1.22;
+}
+
+.agent-sketch {
+    margin: 0;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper-strong);
+    box-shadow: 9px 9px 0 var(--line);
+    overflow: hidden;
+}
+
+.sketch-map {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.sketch-paper-edge {
+    fill: #fffaf0;
+    stroke: var(--line);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sketch-path,
+.sketch-arrow,
+.sketch-note-line {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sketch-path-main {
+    stroke: var(--blue);
+}
+
+.sketch-path-return {
+    stroke: var(--teal);
+}
+
+.sketch-path-loop {
+    stroke: var(--amber);
+    stroke-dasharray: 12 14;
+}
+
+.sketch-arrow-head {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sketch-node path {
+    stroke: var(--line);
+    stroke-width: 5;
+    stroke-linejoin: round;
+}
+
+.prompt-node path {
+    fill: #fbd6c9;
+}
+
+.plan-node path {
+    fill: #e0edff;
+}
+
+.tool-node path {
+    fill: #dff0ea;
+}
+
+.memory-node path {
+    fill: #f6e7bf;
+}
+
+.review-node path {
+    fill: #e7e0fb;
+}
+
+.ship-node path {
+    fill: #d8eed2;
+}
+
+.sketch-node text,
+.sketch-note {
+    fill: var(--line);
+    font-family: "Kalam", "Inter", sans-serif;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.sketch-node text {
+    font-size: 29px;
+}
+
+.sketch-note {
+    font-size: 25px;
+}
+
+.sketch-note-top {
+    fill: var(--coral);
+}
+
+.sketch-note-bottom {
+    fill: var(--teal);
+}
+
+.agent-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 18px;
+    color: var(--ink);
+    background: var(--paper);
+    transition: opacity 260ms ease, visibility 260ms ease;
+}
+
+.agent-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 112px;
+}
+
+.loader-ring {
+    position: absolute;
+    inset: 8px;
+    border: 3px solid var(--line);
+    border-right-color: var(--coral);
+    border-radius: 999px;
+    animation: loader-spin 1.2s linear infinite;
+}
+
+.loader-ring-offset {
+    inset: 22px;
+    border-color: var(--teal);
+    border-left-color: var(--line);
+    animation-direction: reverse;
+}
+
+.loader-core {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper-strong);
+    font-weight: 800;
+}
+
+.agent-loader p {
+    margin: 0;
+    font-family: "Kalam", "Inter", sans-serif;
+    font-size: 1.2rem;
+}
+
+@keyframes loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 980px) {
+    .agent-shell {
+        width: min(100% - 36px, 760px);
+        padding-bottom: 54px;
+    }
+
+    .agent-nav {
+        margin-bottom: 42px;
+    }
+
+    .hero-grid,
+    .about-panel,
+    .sketch-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+        gap: 34px;
+    }
+
+    .hero-copy h1 {
+        max-width: 12ch;
+        font-size: 3.7rem;
+    }
+
+    .portrait-card {
+        max-width: 420px;
+        justify-self: center;
+        transform: rotate(0.5deg);
+    }
+
+    .focus-list {
+        grid-template-columns: 1fr;
+    }
+
+    .focus-item {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .agent-shell {
+        width: min(100% - 28px, 520px);
+        padding-top: 18px;
+    }
+
+    .agent-nav {
+        align-items: flex-start;
+        margin-bottom: 34px;
+    }
+
+    .language-switch span {
+        min-width: 40px;
+        padding: 7px 8px;
+    }
+
+    .hero-copy h1 {
+        max-width: 11ch;
+        font-size: 3rem;
+    }
+
+    .hero-title {
+        font-size: 1.22rem;
+    }
+
+    .hero-subtitle,
+    .about-copy p {
+        font-size: 1rem;
+    }
+
+    .agent-content {
+        gap: 46px;
+        margin-top: 54px;
+    }
+
+    .portrait-card {
+        padding: 18px;
+        box-shadow: 6px 6px 0 var(--line);
+    }
+
+    .portrait-sketch {
+        width: min(220px, 100%);
+    }
+
+    .focus-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .sketch-panel h2 {
+        font-size: 1.46rem;
+    }
+
+    .agent-sketch {
+        box-shadow: 6px 6px 0 var(--line);
+    }
+
+    .sketch-node text {
+        font-size: 25px;
+    }
+
+    .sketch-note {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-copy h1 {
+        font-size: 2.45rem;
+    }
+
+    .brand-mark {
+        gap: 8px;
+    }
+
+    .brand-dot {
+        width: 12px;
+        height: 12px;
+        box-shadow: 4px 4px 0 var(--line);
+    }
+}

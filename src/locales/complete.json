@@ -1,54 +1,82 @@
 {
-  "我的花名（或者是笔名）叫“不换”，英文名叫 ryan。在现实生活中你可以叫我 “小王”，在游戏里，我有一个独一无二的名字叫 “林温芙”，很荣幸你能在这里看到我的个人介绍。": {
-    "zh": "我的花名（或者是笔名）叫“不换”，英文名叫 ryan。在现实生活中你可以叫我 “小王”，在游戏里，我有一个独一无二的名字叫 “林温芙”，很荣幸你能在这里看到我的个人介绍。",
-    "en": "My flower name (or pen name) is \"不换\", English name is Ryan Wang. In real life you can call me \"小王\", in the game, I have a unique name called \"林温芙\", it's an honor that you can see my personal introduction here."
+  "正在打开工作台": {
+    "zh": "正在打开工作台",
+    "en": "Opening the workbench"
   },
-  "上找到我，也可以使用": {
-    "zh": "上找到我，也可以使用",
-    "en": "and can also use"
+  "手绘头像": {
+    "zh": "手绘头像",
+    "en": "Hand-drawn portrait"
   },
-  "联系我": {
-    "zh": "联系我",
-    "en": "to reach me"
+  "AI Agent 工作流图": {
+    "zh": "AI Agent 工作流图",
+    "en": "AI Agent workflow"
   },
-  "我随着兴趣爱好写了一些小玩意，你可以尽情欣赏～": {
-    "zh": "我随着兴趣爱好写了一些小玩意，你可以尽情欣赏～",
-    "en": "I wrote some small things out of interest and hobby, you can enjoy them~"
+  "AI Agent 工作者": {
+    "zh": "AI Agent 工作者",
+    "en": "AI Agent builder"
   },
-  "热爱工作，也同样热爱开源社区，下班后喜欢静下心来研究一些奇奇怪怪的东西，你可以在": {
-    "zh": "热爱工作，也同样热爱开源社区，下班后喜欢静下心来研究一些奇奇怪怪的东西，你可以在",
-    "en": "Love the work and also the open source community. After work, I like to calm down and study some strange things.You can find me on"
+  "AI Agent 构建者与工作流设计者": {
+    "zh": "AI Agent 构建者与工作流设计者",
+    "en": "AI Agent builder and workflow designer"
   },
-  "周刊": {
-    "zh": "周刊",
-    "en": "Weekly"
+  "把模型、工具、记忆和人类反馈接成能稳定交付的工作流。": {
+    "zh": "把模型、工具、记忆和人类反馈接成能稳定交付的工作流。",
+    "en": "Connecting models, tools, memory, and human feedback into workflows that can ship reliably."
   },
-  "TS手札": {
-    "zh": "TS手札",
-    "en": "Handbook"
+  "从想法到行动的 Agent 工作流": {
+    "zh": "从想法到行动的 Agent 工作流",
+    "en": "An Agent workflow from intent to action"
   },
-  "博客": {
-    "zh": "博客",
-    "en": "Blog"
+  "关于我": {
+    "zh": "关于我",
+    "en": "About"
   },
-  "须弥": {
-    "zh": "须弥",
-    "en": "XuMi"
+  "我现在把主要精力放在 AI Agent：把大模型能力、工具调用、上下文记忆和人工确认编排成可靠流程。": {
+    "zh": "我现在把主要精力放在 AI Agent：把大模型能力、工具调用、上下文记忆和人工确认编排成可靠流程。",
+    "en": "I now focus on AI Agents: orchestrating model capabilities, tool calls, contextual memory, and human confirmation into reliable flows."
   },
-  "最后，我还是公众号(\"不换的随想乐园\")的作者，平时喜欢总结和输出一些知识理解和经验总结，如果你也感兴趣，欢迎来关注我哦~": {
-    "zh": "最后，我还是公众号(\"不换的随想乐园\")的作者，平时喜欢总结和输出一些知识理解和经验总结，如果你也感兴趣，欢迎来关注我哦~",
-    "en": "Finally, I forgot to introduce that I'm also the author of a WeChat official account (\"不换的随想乐园\"). Usually, I like to summarize and output some understandings of knowledge and summaries of experience. If you are also interested, welcome to follow me!"
+  "我更关心 Agent 能不能被理解、被验证、被放心交给真实任务，而不只是一次漂亮的演示。": {
+    "zh": "我更关心 Agent 能不能被理解、被验证、被放心交给真实任务，而不只是一次漂亮的演示。",
+    "en": "I care more about whether an Agent can be understood, verified, and trusted with real work, not just whether it makes a polished demo."
   },
-  "我的花名（或者是笔名）叫“不换”，英文名叫 ryanwang。在现实生活中你可以叫我 “小王”，在游戏里，我有一个独一无二的名字叫 “林温芙”，很荣幸你能在这里看到我的个人介绍。": {
-    "zh": "我的花名（或者是笔名）叫“不换”，英文名叫 ryanwang。在现实生活中你可以叫我 “小王”，在游戏里，我有一个独一无二的名字叫 “林温芙”，很荣幸你能在这里看到我的个人介绍。",
-    "en": "My flower name (or pen name) is \"不换\", English name is Ryan Wang. In real life you can call me \"小王\", in the game, I have a unique name called \"林温芙\", it's an honor that you can see my personal introduction here."
+  "Agent 方向": {
+    "zh": "Agent 方向",
+    "en": "Agent focus"
   },
-  "我是一名拥有 5年+ 经验的前端开发者，比较熟悉 react，擅长组件库的开发、治理和维护，精通前端领域所有框架的拼写，擅长各种 API 的阅读和调用。": {
-    "zh": "我是一名拥有 5年+ 经验的前端开发者，比较熟悉 react，擅长组件库的开发、治理和维护，精通前端领域所有框架的拼写，擅长各种 API 的阅读和调用。",
-    "en": "I am a web developer with 5 years + of experience, familiar with React, good at developing, governing and maintaining component libraries, proficient in spelling all frameworks in the front-end field, and good at reading and calling various APIs."
+  "AI Agent 体验": {
+    "zh": "AI Agent 体验",
+    "en": "AI Agent experience"
   },
-  "我的花名（或者是笔名）叫\"不换\"，英文名叫 ryanwang。在现实生活中你可以叫我 \"小王\"，在游戏里，我有一个独一无二的名字叫 \"林温芙\"，很荣幸你能在这里看到我的个人介绍。": {
-    "zh": "我的花名（或者是笔名）叫\"不换\"，英文名叫 ryanwang。在现实生活中你可以叫我 \"小王\"，在游戏里，我有一个独一无二的名字叫 \"林温芙\"，很荣幸你能在这里看到我的个人介绍。",
-    "en": "My pen name is \"不换\" and my English name is Ryan Wang. In daily life, you can call me \"Little Wang.\" In games, I have a unique name: \"Lin Wenfu.\" It’s a pleasure to have you here reading my personal introduction."
+  "把复杂能力拆成清晰步骤，让用户知道 Agent 正在想什么、做到哪一步。": {
+    "zh": "把复杂能力拆成清晰步骤，让用户知道 Agent 正在想什么、做到哪一步。",
+    "en": "Turning complex capability into clear steps, so people know what the Agent is considering and where it is in the flow."
+  },
+  "工具编排": {
+    "zh": "工具编排",
+    "en": "Tool orchestration"
+  },
+  "连接 API、脚本、浏览器和文档系统，让重复劳动变成可复用流程。": {
+    "zh": "连接 API、脚本、浏览器和文档系统，让重复劳动变成可复用流程。",
+    "en": "Connecting APIs, scripts, browsers, and document systems so repeated work becomes reusable flow."
+  },
+  "人机协作": {
+    "zh": "人机协作",
+    "en": "Human collaboration"
+  },
+  "在关键节点保留确认、回退和审计，让自动化更稳、更可控。": {
+    "zh": "在关键节点保留确认、回退和审计，让自动化更稳、更可控。",
+    "en": "Keeping confirmation, rollback, and review at key moments so automation stays stable and controllable."
+  },
+  "工作流": {
+    "zh": "工作流",
+    "en": "Workflow"
+  },
+  "small loops, clear state": {
+    "zh": "小循环，状态清楚",
+    "en": "small loops, clear state"
+  },
+  "human check": {
+    "zh": "人工确认",
+    "en": "human check"
   }
 }
