@@ -1,82 +1,86 @@
 {
-  "正在打开工作台": {
-    "zh": "正在打开工作台",
-    "en": "Opening the workbench"
+  "页面导航": {
+    "zh": "页面导航",
+    "en": "Page navigation"
   },
-  "手绘头像": {
-    "zh": "手绘头像",
-    "en": "Hand-drawn portrait"
+  "切换语言": {
+    "zh": "切换语言",
+    "en": "Toggle language"
   },
-  "AI Agent 工作流图": {
-    "zh": "AI Agent 工作流图",
-    "en": "AI Agent workflow"
+  "个人链接": {
+    "zh": "个人链接",
+    "en": "Personal links"
   },
-  "AI Agent 工作者": {
-    "zh": "AI Agent 工作者",
-    "en": "AI Agent builder"
+  "不换 / Ryan Wang": {
+    "zh": "不换 / Ryan Wang",
+    "en": "Ryan Wang"
   },
-  "AI Agent 构建者与工作流设计者": {
-    "zh": "AI Agent 构建者与工作流设计者",
-    "en": "AI Agent builder and workflow designer"
+  "把想法、工具和文字慢慢整理成可复用的东西。": {
+    "zh": "把想法、工具和文字慢慢整理成可复用的东西。",
+    "en": "Turning ideas, tools, and writing into things that can be reused."
   },
-  "把模型、工具、记忆和人类反馈接成能稳定交付的工作流。": {
-    "zh": "把模型、工具、记忆和人类反馈接成能稳定交付的工作流。",
-    "en": "Connecting models, tools, memory, and human feedback into workflows that can ship reliably."
+  "我关注 AI Agent、产品体验和工程工具。比起热闹的概念，我更在意一个系统能不能被理解、被验证，并且真的帮人把事情做好。": {
+    "zh": "我关注 AI Agent、产品体验和工程工具。比起热闹的概念，我更在意一个系统能不能被理解、被验证，并且真的帮人把事情做好。",
+    "en": "I focus on AI Agents, product experience, and engineering tools. More than loud concepts, I care whether a system can be understood, verified, and actually help people finish real work."
   },
-  "从想法到行动的 Agent 工作流": {
-    "zh": "从想法到行动的 Agent 工作流",
-    "en": "An Agent workflow from intent to action"
+  "阅读博客": {
+    "zh": "阅读博客",
+    "en": "Read the blog"
   },
-  "关于我": {
-    "zh": "关于我",
+  "关于": {
+    "zh": "关于",
     "en": "About"
   },
-  "我现在把主要精力放在 AI Agent：把大模型能力、工具调用、上下文记忆和人工确认编排成可靠流程。": {
-    "zh": "我现在把主要精力放在 AI Agent：把大模型能力、工具调用、上下文记忆和人工确认编排成可靠流程。",
-    "en": "I now focus on AI Agents: orchestrating model capabilities, tool calls, contextual memory, and human confirmation into reliable flows."
+  "我习惯从一个具体问题开始：哪里重复、哪里不确定、哪里需要人来确认。然后把模型、工具、上下文和界面串起来，做成能被长期使用的流程。": {
+    "zh": "我习惯从一个具体问题开始：哪里重复、哪里不确定、哪里需要人来确认。然后把模型、工具、上下文和界面串起来，做成能被长期使用的流程。",
+    "en": "I usually start from a concrete problem: what is repetitive, what is uncertain, and where a human should stay in the loop. Then I connect models, tools, context, and interface into flows that can be used for a long time."
   },
-  "我更关心 Agent 能不能被理解、被验证、被放心交给真实任务，而不只是一次漂亮的演示。": {
-    "zh": "我更关心 Agent 能不能被理解、被验证、被放心交给真实任务，而不只是一次漂亮的演示。",
-    "en": "I care more about whether an Agent can be understood, verified, and trusted with real work, not just whether it makes a polished demo."
+  "这个页面不想讲得太满。它更像一个入口：记录我正在关注的方向，也把博客、代码和联系方式放在同一个安静的地方。": {
+    "zh": "这个页面不想讲得太满。它更像一个入口：记录我正在关注的方向，也把博客、代码和联系方式放在同一个安静的地方。",
+    "en": "This page is intentionally quiet. It is an entry point for what I am paying attention to, with my blog, code, and contact links in one calm place."
   },
-  "Agent 方向": {
-    "zh": "Agent 方向",
-    "en": "Agent focus"
+  "正在关注": {
+    "zh": "正在关注",
+    "en": "Current focus"
   },
-  "AI Agent 体验": {
-    "zh": "AI Agent 体验",
-    "en": "AI Agent experience"
+  "AI Agent": {
+    "zh": "AI Agent",
+    "en": "AI Agent"
   },
-  "把复杂能力拆成清晰步骤，让用户知道 Agent 正在想什么、做到哪一步。": {
-    "zh": "把复杂能力拆成清晰步骤，让用户知道 Agent 正在想什么、做到哪一步。",
-    "en": "Turning complex capability into clear steps, so people know what the Agent is considering and where it is in the flow."
+  "关注 Agent 如何拆解任务、调用工具、保留上下文，并在关键节点接受人的判断。": {
+    "zh": "关注 Agent 如何拆解任务、调用工具、保留上下文，并在关键节点接受人的判断。",
+    "en": "How Agents break work down, call tools, keep context, and leave room for human judgment at the right moments."
   },
-  "工具编排": {
-    "zh": "工具编排",
-    "en": "Tool orchestration"
+  "产品体验": {
+    "zh": "产品体验",
+    "en": "Product experience"
   },
-  "连接 API、脚本、浏览器和文档系统，让重复劳动变成可复用流程。": {
-    "zh": "连接 API、脚本、浏览器和文档系统，让重复劳动变成可复用流程。",
-    "en": "Connecting APIs, scripts, browsers, and document systems so repeated work becomes reusable flow."
+  "喜欢把复杂流程压成清楚、可解释、能被反复使用的体验。": {
+    "zh": "喜欢把复杂流程压成清楚、可解释、能被反复使用的体验。",
+    "en": "Turning complex workflows into clear, explainable experiences that people can use repeatedly."
   },
-  "人机协作": {
-    "zh": "人机协作",
-    "en": "Human collaboration"
+  "工程工具": {
+    "zh": "工程工具",
+    "en": "Engineering tools"
   },
-  "在关键节点保留确认、回退和审计，让自动化更稳、更可控。": {
-    "zh": "在关键节点保留确认、回退和审计，让自动化更稳、更可控。",
-    "en": "Keeping confirmation, rollback, and review at key moments so automation stays stable and controllable."
+  "长期整理脚本、CLI、浏览器自动化和文档工作流，让日常工作少一点重复劳动。": {
+    "zh": "长期整理脚本、CLI、浏览器自动化和文档工作流，让日常工作少一点重复劳动。",
+    "en": "Collecting scripts, CLIs, browser automation, and document workflows so everyday work has less repetition."
   },
-  "工作流": {
-    "zh": "工作流",
-    "en": "Workflow"
+  "最近的想法": {
+    "zh": "最近的想法",
+    "en": "Recent notes"
   },
-  "small loops, clear state": {
-    "zh": "小循环，状态清楚",
-    "en": "small loops, clear state"
+  "把模型能力放进真实工作流里，而不是只停在一次漂亮演示。": {
+    "zh": "把模型能力放进真实工作流里，而不是只停在一次漂亮演示。",
+    "en": "Put model capability into real workflows, not just polished one-off demos."
   },
-  "human check": {
-    "zh": "人工确认",
-    "en": "human check"
+  "把工具做得可理解、可回退、可验证。": {
+    "zh": "把工具做得可理解、可回退、可验证。",
+    "en": "Make tools understandable, reversible, and verifiable."
+  },
+  "把个人知识、写作和工程实践慢慢沉淀下来。": {
+    "zh": "把个人知识、写作和工程实践慢慢沉淀下来。",
+    "en": "Let personal knowledge, writing, and engineering practice accumulate slowly."
   }
 }
